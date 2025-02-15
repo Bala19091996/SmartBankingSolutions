@@ -1,0 +1,298 @@
+import React, { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import axios from "axios";
+
+const AdminEdit = () => {
+  const navigate = useNavigate();
+  const { adminId } = useParams(); // Get admin ID from URL params
+
+  const [admin, setAdmin] = useState({
+    adminName: "",
+    password: "",
+    position: "",
+    salary: "",
+    adminEmail: "",
+    phoneNo: "",
+    address: {
+      street: "",
+      city: "",
+      state: "",
+      zipCode: "",
+    },
+  });
+
+  const [updateStatus, setUpdateStatus] = useState("");
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8080/api/admin/admin/${adminId}`)
+      .then((response) => setAdmin(response.data))
+      .catch((error) => console.error("Error fetching admin details", error));
+  }, [adminId]);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setAdmin({ ...admin, [name]: value });
+  };
+
+  const handleAddressChange = (e) => {
+    const { name, value } = e.target;
+    setAdmin({ ...admin, address: { ...admin.address, [name]: value } });
+  };
+
+  const handleUpdate = async (e) => {
+    e.preventDefault();
+
+    try {
+      await axios.put(`http://localhost:8080/api/admin/update/${adminId}`, admin);
+      setUpdateStatus("Admin details updated successfully!");
+    } catch (error) {
+      setUpdateStatus("Update failed. Please try again.");
+    }
+  };
+
+  return (
+    <div style={styles.container}>
+      {/* Navigation */}
+      <div style={styles.navMenu}>
+        <div onClick={() => navigate("/AdminDashboard")} style={styles.navItem}>Dashboard</div>
+        <div onClick={() => navigate("/adminList")} style={styles.navItem}>Admin List</div>
+        <div onClick={() => navigate("/Help")} style={styles.navItem}>Support</div>
+        <div onClick={() => navigate("/")} style={styles.navItem}>Logout</div>
+      </div>
+
+      <h1 style={styles.header}>Edit Admin Details</h1>
+
+      <div style={styles.formContainer}>
+        <form onSubmit={handleUpdate} style={styles.form}>
+          <div style={styles.formGroup}>
+            <label style={styles.label}>Admin Name</label>
+            <input
+              type="text"
+              name="adminName"
+              value={admin.adminName}
+              onChange={handleChange}
+              placeholder="Enter admin name"
+              style={styles.input}
+              required
+            />
+          </div>
+
+          <div style={styles.formGroup}>
+            <label style={styles.label}>Password</label>
+            <input
+              type="password"
+              name="password"
+              value={admin.password}
+              onChange={handleChange}
+              placeholder="Enter new password"
+              style={styles.input}
+            />
+          </div>
+
+          <div style={styles.formGroup}>
+            <label style={styles.label}>Position</label>
+            <input
+              type="text"
+              name="position"
+              value={admin.position}
+              onChange={handleChange}
+              placeholder="Enter position"
+              style={styles.input}
+              required
+            />
+          </div>
+
+          <div style={styles.formGroup}>
+            <label style={styles.label}>Salary</label>
+            <input
+              type="number"
+              name="salary"
+              value={admin.salary}
+              onChange={handleChange}
+              placeholder="Enter salary"
+              style={styles.input}
+              required
+            />
+          </div>
+
+          <div style={styles.formGroup}>
+            <label style={styles.label}>Email</label>
+            <input
+              type="email"
+              name="adminEmail"
+              value={admin.adminEmail}
+              onChange={handleChange}
+              placeholder="Enter email"
+              style={styles.input}
+              required
+            />
+          </div>
+
+          <div style={styles.formGroup}>
+            <label style={styles.label}>Phone Number</label>
+            <input
+              type="tel"
+              name="phoneNo"
+              value={admin.phoneNo}
+              onChange={handleChange}
+              placeholder="Enter phone number"
+              style={styles.input}
+              required
+            />
+          </div>
+
+          {/* Address Fields */}
+          <h2 style={styles.subHeader}>Address</h2>
+
+          <div style={styles.formGroup}>
+            <label style={styles.label}>Street</label>
+            <input
+              type="text"
+              name="street"
+              value={admin.address.street}
+              onChange={handleAddressChange}
+              placeholder="Enter street"
+              style={styles.input}
+              required
+            />
+          </div>
+
+          <div style={styles.formGroup}>
+            <label style={styles.label}>City</label>
+            <input
+              type="text"
+              name="city"
+              value={admin.address.city}
+              onChange={handleAddressChange}
+              placeholder="Enter city"
+              style={styles.input}
+              required
+            />
+          </div>
+
+          <div style={styles.formGroup}>
+            <label style={styles.label}>State</label>
+            <input
+              type="text"
+              name="state"
+              value={admin.address.state}
+              onChange={handleAddressChange}
+              placeholder="Enter state"
+              style={styles.input}
+              required
+            />
+          </div>
+
+          <div style={styles.formGroup}>
+            <label style={styles.label}>Zip Code</label>
+            <input
+              type="text"
+              name="zipCode"
+              value={admin.address.zipCode}
+              onChange={handleAddressChange}
+              placeholder="Enter zip code"
+              style={styles.input}
+              required
+            />
+          </div>
+
+          <button type="submit" style={styles.button}>Update Admin</button>
+        </form>
+
+        {/* Update Status */}
+        {updateStatus && <p style={styles.status}>{updateStatus}</p>}
+      </div>
+
+      <footer style={styles.footer}>
+        <p>&copy; 2024 Smart Banking Solution. All rights reserved.</p>
+      </footer>
+    </div>
+  );
+};
+
+// Styles (Same as FundTransfer)
+const styles = {
+  container: {
+    fontFamily: "'Poppins', sans-serif",
+    padding: "2rem",
+    backgroundColor: "rgba(25, 25, 25, 0.81)",
+    minHeight: "100vh",
+    color: "rgba(255, 255, 255, 0.86)",
+  },
+  navMenu: {
+    display: "flex",
+    justifyContent: "center",
+    gap: "1.5rem",
+    padding: "1rem",
+    backgroundColor: "#0056b3",
+    borderRadius: "8px",
+    color: "#fff",
+    fontWeight: "bold",
+  },
+  navItem: {
+    cursor: "pointer",
+    padding: "0.5rem 1rem",
+    borderRadius: "4px",
+    transition: "background 0.3s",
+  },
+  header: {
+    textAlign: "center",
+    fontSize: "2.5rem",
+    fontWeight: "bold",
+    marginBottom: "1rem",
+  },
+  subHeader: {
+    textAlign: "center",
+    fontSize: "1.5rem",
+    fontWeight: "bold",
+    marginTop: "1rem",
+    color: "#fff",
+  },
+  formContainer: {
+    maxWidth: "500px",
+    margin: "auto",
+    padding: "2rem",
+    backgroundColor: "#222",
+    borderRadius: "8px",
+    boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.3)",
+  },
+  form: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "1rem",
+  },
+  formGroup: {
+    display: "flex",
+    flexDirection: "column",
+  },
+  label: {
+    fontWeight: "bold",
+    marginBottom: "0.5rem",
+  },
+  input: {
+    padding: "0.8rem",
+    fontSize: "1rem",
+    borderRadius: "4px",
+    border: "1px solid #666",
+    backgroundColor: "#333",
+    color: "#fff",
+  },
+  button: {
+    padding: "0.8rem",
+    backgroundColor: "#007bff",
+    color: "#fff",
+    borderRadius: "4px",
+  },
+  status: {
+    marginTop: "1rem",
+    textAlign: "center",
+    color: "#28a745",
+  },
+  footer: {
+    textAlign: "center",
+    marginTop: "2rem",
+  },
+};
+
+export default AdminEdit;
