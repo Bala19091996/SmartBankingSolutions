@@ -1,0 +1,207 @@
+[
+  {
+    "userName": "JohnDoe",
+    "password": "password123",
+    "userEmail": "john.doe@example.com",
+    "userPhoneNo": "9876543210",
+    "userAdharNo": 123456789012,
+    "userPanNo": 987654321,
+    "isApproved": false,
+    "accountStatus": "PENDING",
+    "address": {
+      "street": "123 Main St",
+      "city": "New York",
+      "state": "NY",
+      "zipcode": "10001"
+    }
+  },
+  {
+    "userName": "AliceSmith",
+    "password": "alicepass",
+    "userEmail": "alice.smith@example.com",
+    "userPhoneNo": "9876543211",
+    "userAdharNo": 234567890123,
+    "userPanNo": 876543210,
+    "isApproved": true,
+    "accountStatus": "ACTIVE",
+    "address": {
+      "street": "456 Elm St",
+      "city": "Los Angeles",
+      "state": "CA",
+      "zipcode": "90001"
+    }
+  },
+  {
+    "userName": "RobertBrown",
+    "password": "robert123",
+    "userEmail": "robert.brown@example.com",
+    "userPhoneNo": "9876543212",
+    "userAdharNo": 345678901234,
+    "userPanNo": 765432109,
+    "isApproved": false,
+    "accountStatus": "PENDING",
+    "address": {
+      "street": "789 Oak St",
+      "city": "Chicago",
+      "state": "IL",
+      "zipcode": "60601"
+    }
+  },
+  {
+    "userName": "EmilyDavis",
+    "password": "emilysecure",
+    "userEmail": "emily.davis@example.com",
+    "userPhoneNo": "9876543213",
+    "userAdharNo": 456789012345,
+    "userPanNo": 654321098,
+    "isApproved": true,
+    "accountStatus": "SUSPENDED",
+    "address": {
+      "street": "101 Pine St",
+      "city": "Houston",
+      "state": "TX",
+      "zipcode": "77001"
+    }
+  },
+  {
+    "userName": "MichaelWilson",
+    "password": "michaelpass",
+    "userEmail": "michael.wilson@example.com",
+    "userPhoneNo": "9876543214",
+    "userAdharNo": 567890123456,
+    "userPanNo": 543210987,
+    "isApproved": true,
+    "accountStatus": "ACTIVE",
+    "address": {
+      "street": "202 Maple St",
+      "city": "Phoenix",
+      "state": "AZ",
+      "zipcode": "85001"
+    }
+  }
+]
+
+
+
+
+[
+  {
+    "user": 1,
+    "accountNumber": "1234567890",
+    "accountType": "SAVINGS",
+    "balance": 1500.00,
+    "isActive": true
+  },
+  {
+    "user": 2,
+    "accountNumber": "2345678901",
+    "accountType": "CHECKING",
+    "balance": 4500.50,
+    "isActive": true
+  },
+  {
+    "user": 3,
+    "accountNumber": "3456789012",
+    "accountType": "SAVINGS",
+    "balance": 800.00,
+    "isActive": false
+  },
+  {
+    "user": 4,
+    "accountNumber": "4567890123",
+    "accountType": "CURRENT",
+    "balance": 12000.75,
+    "isActive": true
+  },
+  {
+    "user": 5,
+    "accountNumber": "5678901234",
+    "accountType": "SAVINGS",
+    "balance": 2500.30,
+    "isActive": true
+  }
+]
+
+
+
+
+
+
+
+
+
+
+
+
+[
+  {
+    "adminName": "John Doe",
+    "password": "Pass@123",
+    "position": "Bank Manager",
+    "salary": 85000.00,
+    "adminEmail": "bala@smartbank.com",
+    "phoneNo": 9876543210,
+    "address": {
+      "street": "123 Bank Street",
+      "city": "New York",
+      "state": "NY",
+      "zipcode": "10001"
+    }
+  },
+  {
+    "adminName": "Jane Smith",
+    "password": "password456",
+    "position": "Loan Officer",
+    "salary": 65000.50,
+    "adminEmail": "kartik@smartbank.com",
+    "phoneNo": 9123456789,
+    "address": {
+      "street": "456 Finance Ave",
+      "city": "Los Angeles",
+      "state": "CA",
+      "zipcode": "90012"
+    }
+  },
+  {
+    "adminName": "Michael Johnson",
+    "password": "mikeSecure789",
+    "position": "Branch Supervisor",
+    "salary": 72000.75,
+    "adminEmail": "michael.johnson@smartbank.com",
+    "phoneNo": 8234567890,
+    "address": {
+      "street": "789 Savings Blvd",
+      "city": "Chicago",
+      "state": "IL",
+      "zipcode": "60604"
+    }
+  },
+  {
+    "adminName": "Emily Davis",
+    "password": "emilyPass999",
+    "position": "Investment Manager",
+    "salary": 95000.00,
+    "adminEmail": "emily.davis@smartbank.com",
+    "phoneNo": 8345678901,
+    "address": {
+      "street": "567 Capital Lane",
+      "city": "Houston",
+      "state": "TX",
+      "zipcode": "77002"
+    }
+  },
+  {
+    "adminName": "Robert Brown",
+    "password": "robertSafe321",
+    "position": "Compliance Officer",
+    "salary": 78000.25,
+    "adminEmail": "robert.brown@smartbank.com",
+    "phoneNo": 8456789012,
+    "address": {
+      "street": "678 Regulation Road",
+      "city": "San Francisco",
+      "state": "CA",
+      "zipcode": "94105"
+    }
+  }
+]
